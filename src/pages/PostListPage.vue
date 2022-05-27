@@ -7,16 +7,11 @@
 
 <script>
 import PostList from '@/components/PostList'
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default{
   name: 'PostListPage',
   components: {PostList},
-  data () {
-    return {
-      posts: []
-    }
-  },
   created () {
     this.fetchPostList()
   },
@@ -24,6 +19,9 @@ export default{
     ...mapActions([
       'fetchPostList'
     ])
+  },
+  computed: {
+    ...mapState(['posts'])
   }
 }
 </script>
